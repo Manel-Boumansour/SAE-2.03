@@ -1,0 +1,357 @@
+﻿<!DOCTYPE html>
+<html>
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapport SAE</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+  <link rel="stylesheet"  type="text/css" href="../src/style.css">
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#rapport-sae-2.03">Rapport SAE 2.03</a>
+<ul>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+<li><a href="#sommaire">Sommaire</a></li>
+<li><a href="#installation-de-la-machine-virtuelle-manuellement">Installation de la machine virtuelle manuellement</a></li>
+<li><a href="#installation-debian-automatisée-par-préconfiguration">Installation Debian automatisée par préconfiguration</a></li>
+<li><a href="#installation-du-service-gitea">Installation du service Gitea</a></li>
+<li><a href="#sources">Sources</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+       
+	 
+
+<h1 id="rapport-sae-2.03">Rapport SAE 2.03</h1>
+<h4 id="manel-boumansour-léa-demory--groupe-c">Manel BOUMANSOUR, Léa DEMORY | Groupe C</h4>
+<h2 id="sommaire">Sommaire</h2>
+<ul>
+<li><a href="#installation-de-la-machine-virtuelle-manuellement">Installation de la machine virtuelle manuellement</a>
+<ul>
+<li><a href="#configuration-mat%C3%A9rielle-dans-virtualbox"><em>Configuration matérielle dans VirtualBox</em></a></li>
+<li><a href="#installation-os-de-base"><em>Installation OS de base</em></a></li>
+<li><a href="#les-droits-sudo"><em>Les droits sudo</em></a></li>
+<li><a href="#suppl%C3%A9ments-invit%C3%A9s"><em>Suppléments invités</em></a></li>
+</ul>
+</li>
+<li><a href="#installation-debian-automatis%C3%A9e-par-pr%C3%A9configuration">Installation Debian automatisée par préconfiguration</a>
+<ul>
+<li><a href="#documentation"><em>Documentation</em></a></li>
+<li><a href="#installation-pr%C3%A9configur%C3%A9e"><em>Installation préconfigurée</em></a></li>
+</ul>
+</li>
+<li><a href="#installation-du-service-gitea">Installation du service Gitea</a>
+<ul>
+<li><a href="#git-gui-et-gitk"><em>Git-gui et Gitk</em></a></li>
+<li><a href="#fichier-binaire"><em>Fichier Binaire</em></a></li>
+<li><a href="#gitea"><em>Gitea</em></a></li>
+</ul>
+</li>
+<li><a href="#sources">Sources</a>
+<ul>
+<li><a href="#installation-de-la-machine-virtuelle-manuellement-1">Installation de la machine virtuelle manuellement</a></li>
+<li><a href="#installation-debian-automatis%C3%A9e-par-pr%C3%A9configuration-1">Installation Debian automatisée par préconfiguration</a></li>
+<li><a href="#installation-du-service-gitea-1">Installation du service Gitea</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="installation-de-la-machine-virtuelle-manuellement">Installation de la machine virtuelle manuellement</h2>
+<p>Afin d’installer une machine virtuelle sur notre environnement, il faut passer par plusieurs étapes :</p>
+<h3 id="configuration-matérielle-dans-virtualbox"><em>Configuration matérielle dans VirtualBox</em></h3>
+<p>La première étape à la création d’une machine virtuelle est de définir un <strong>nom à la machine</strong>, un <strong>emplacement</strong> où seront stocké les fichiers dans votre ordinateur (un chemin plus précisément), un <strong>type</strong>(donc un système d’exploitation) et une <strong>version</strong> du système d’exploitation avec le nombre de bits voulu.</p>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/SAE1.png" alt="Création machine"></p>
+<p>Ensuite, il faut paramétrer la mémoire vive et le disque dur, et enfin la machine virtuelle est crée. Il nous est donc possible à présent de voir ses caractéristiques. Nous pouvons apercevoir que par défaut, <em>VirtualBox</em> a appliqué la configuration réseau NAT à notre machine.</p>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/SAE3.png" alt="Configuration"></p>
+<p>Lorsqu’une machine virtuelle est crée par <em>VirtualBox</em>, la configuration de la machine est stockée dans un fichier XML <strong>VirtualBox.xml-prev</strong> crée automatiquement lors de la création de la machine.</p>
+<h3 id="installation-os-de-base"><em>Installation OS de base</em></h3>
+<p>Une fois la configuration matérielle terminée, il faut installer un <strong>système d’exploitation</strong>. Pour cela, il faut insérer une <strong>image iso bootable</strong> dans un lecteur de <strong>cdrom virtuel</strong> présent par défaut. Une <strong>image</strong> ou <strong>fichier ISO</strong> est un fichier, qui porte l’extension <em>“.iso”</em>, contenant l’intégralité de son support d’origine (d’un CD par exemple), particulièrement tout ce qui pourrait être nécessaire à l’installation et à l’utilisation d’un système d’exploitation, d’un logiciel ou bien même d’un jeu. On dit qu’il est <strong>“bootable”</strong> lorsque l’on peut démarrer un ordinateur via ce fichier ISO.</p>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/install.PNG" alt="install"></p>
+<p>Ensuite, la machine peut être démarrée. La machine démarre vers l’installateur <strong>Debian</strong>. Il suffit de cliquer sur “Install” pour commencer. Dans un premier temps, nous configurons la langue, dans le cas présent “<em>Français</em>”, puis nous choisissons la localisation, présentement “<em>France</em>”, et la configuration du clavier, ici “<em>Français</em>” (AZERTY).</p>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/langue.PNG" alt="langue"><br>
+<img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/pays.PNG" alt="langue"><br>
+<img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/clavier.PNG" alt="clavier"></p>
+<p>Nous nommons la machine “<em>serveur</em>”.</p>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/nom.PNG" alt="nom"></p>
+<p>Il ne faut pas oublier de rentrer de domaine pour le réseau.</p>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/domaine.PNG" alt="domaine"></p>
+<p>Nous configurons le superutilisateur “<em>root</em>”.</p>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/root.PNG" alt="root"></p>
+<p>Puis un compte utilisateur “<em>User</em>”.</p>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/User1.PNG" alt="User1"><br>
+<img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/user2.PNG" alt="User2"><br>
+<img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/user3.PNG" alt="User3"></p>
+<p>Pour la partition du disque nous choisissons <strong>1 seule partition</strong> recouvrant le disque entier.</p>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/partition1.PNG" alt="partition1"><br>
+<img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/partition2.PNG" alt="partition2"><br>
+<img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/partition3.PNG" alt="partition3"></p>
+<p>Plusieurs noyaux possibles se présentent à nous, on laisse celui par défaut. Par la suite, nous prenons l’image générique.</p>
+<p>On choisit ensuite un <strong>miroir</strong>, premièrement le pays, “<em>France</em>”, puis le miroir le plus proche <em>“<a href="http://debian.polytech-lille.fr">http://debian.polytech-lille.fr</a>”</em>.</p>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/mirroir.PNG" alt="miroir"></p>
+<p>Nous choisissons notre serveur mandataire <em>“<a href="http://cache.univ-lille.fr:3128">http://cache.univ-lille.fr:3128</a>”</em>. Un <strong>serveur mandataire</strong>, ou <strong>proxy</strong>, agit comme un filtre sur les sites web que l’on consulte et il permet de sécuriser les connexions et aussi de cacher l’identité de la machine à l’origine de la requête au serveur qui la recevra. Il est par exemple utile au sein d’une entreprise ou d’un établissement scolaire pour limiter l’accès à certains sites internet.</p>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/proxy.PNG" alt="proxy"></p>
+<p>Nous devons désormais choisir ce que nous souhaitons installer sur notre machine parmi une liste de logiciels.</p>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/logiciels.PNG" alt="logi"></p>
+<p>Nous sélectionnons “<em>MATE</em>” (et n’oublions pas de désélectionner “<em>GNOME</em>”). Ils fournissent un ensemble d’outils, d’applications pour gérer l’apparence et fonctionnalités graphiques : ce sont des environnements de bureau. <strong>GNOME</strong> (<strong>G</strong>NU <strong>N</strong>etwork <strong>O</strong>bject <strong>M</strong>odel <strong>E</strong>nvironment) est utilisé par défaut dans plusieurs systèmes Linux tels que <strong>Ubuntu</strong> et <strong>Manjaro</strong>. <strong>MATE</strong> est la continuation du bureau GNOME 2. Ils sont tous deux open source.</p>
+<p>Nous sélectionnons “<em>serveur web</em>”. Les serveurs web sont constitués de “<em>software</em>”, composants logiciels, et de “<em>hardware</em>”, composants matériels. Au niveau matériel, un <strong>serveur web</strong> est un ordinateur connecté à Internet qui stock des données ou des fichiers (tels que des fichiers HTML ou JavaScript, des images ou bien des feuilles de style CSS) qui peuvent être échangés avec un autre appareil connecté à Internet. Le logiciel contrôle la façon dont les utilisateurs peuvent accéder aux fichiers hébergés. On retrouvera au minimum un serveur HTTP, il s’agit d’un logiciel qui comprend les URL et les requêtes HTTP.</p>
+<p>Nous sélectionnons “<em>serveur ssh</em>”. <strong>SSH</strong> signifie “<em>Secure Shell</em>”. Il s’agit d’un protocole de communication sécurisé qui permet d’accéder à distance à un ordinateur.</p>
+<p>Nous sélectionnons ”<em>utilitaire usuels du système</em>”.</p>
+<p>Une fois l’installation terminée, nous pouvons supprimer l’iso d’installation pour économiser de l’espace.</p>
+<h3 id="les-droits-sudo"><em>Les droits sudo</em></h3>
+<p>Nous pouvons visualiser les groupes d’un utilisateur (ici <em>user</em>), nous utilisons la commande <em>groups user</em> pour afficher les différents groupes auquels <em>user</em> appartient.</p>
+<p><img src="https://cdn.discordapp.com/attachments/1024646421007302696/1079372926513586246/les-groupes.png" alt="sudo"></p>
+<h3 id="suppléments-invités"><em>Suppléments invités</em></h3>
+<p>Le noyau Linux, ajouté par la VM est celui-ci :</p>
+<p><img src="https://cdn.discordapp.com/attachments/1024646421007302696/1079372927088218132/version-noyau.png" alt="sudo"></p>
+<p>Les suppléments invités VirtualBox comprennent des pilotes de périphériques et des applications système qui optimisent le système d’exploitation pour de meilleures performances et une utilisation optimale.</p>
+<ul>
+<li>
+<h4 id="la-commande--mount">La commande  <em>mount</em>:</h4>
+</li>
+</ul>
+<p>La commande <em>mount</em> permet de demander au système d’exploitation de rendre un système de fichiers accessible, à un emplacement spécifié<br>
+Dans <strong>notre</strong> cas de figure cette commande nous permet d’ajouter les paramètres nécessaires pour les ajustements graphiques de VirtualBox, comme par exemple, le glissé déposé ente la machine principale et la virtuelle, ou encore l’ajustement de la taille de la fenêtre par rapport à l’écran.</p>
+<h2 id="installation-debian-automatisée-par-préconfiguration">Installation Debian automatisée par préconfiguration</h2>
+<h3 id="documentation"><em>Documentation</em></h3>
+<p><strong>1. Qu’est-ce que le Projet Debian ? D’où vient le nom Debian ?</strong></p>
+<p>Le projet Debian est un groupe mondial de volontaires ayant pour but de produire un système d’exploitation exclusivement constitué de logiciels libres. Il est lancé en 1993 par <a href="https://en.wikipedia.org/wiki/Ian_Murdock">Ian Murdock</a>. Le nom “Debian” provient de la contraction des prénoms du fondateur de Debian, Ian Murdock (1973-2015), et de celui de son épouse, Debra Lynn.</p>
+<p><img src="https://lh4.googleusercontent.com/zAJkW-40993ybDn2s4iHs606nr5kFb38kvJKd_z8K72r-YCPLf-sIM8aNzJoVuzy8ERScbFh8nxStteg26HQftNgC0RddSK_CZctyCf8P75bLLOiB2uw8uBTf44ZhofkTL20kfOwng4hWoqPk6XV_Zk" alt="Ian Murdock"></p>
+<p><strong>2. Il existe 3 durées de prise en charge (support) de ces versions : la durée minimale, la durée en support long terme (LTS) et la durée en support long terme étendue (ELTS). Quelles sont les durées de ces prises en charge ?</strong></p>
+<ul>
+<li>
+<p>LTS : 5 ans est un projet ayant pour but d’étendre la durée de vie de toutes les versions stables de Debian à (au moins) 5 ans. Il n’est pas gérée par l’équipe chargée de la sécurité de Debian, mais par un groupe distinct de bénévoles et sociétés intéressées pour en faire un succès.</p>
+</li>
+<li>
+<p>ELTS : 10 ans (5 ans supplémentaires après les 5 ans offerts par le projet LTS) est une offre commerciale offrant un prolongement de la durée de vie de 10 ans des versions de Debian. Il ne s’agit pas d’un projet officiel de Debian.</p>
+</li>
+</ul>
+<p><strong>3. Pendant combien de temps les mises à jour de sécurité seront-elles fournies ?</strong></p>
+<p>L’équipe chargée de la sécurité essaye de prendre en charge la distribution stable environ un an après que la version stable suivante ait été publiée, sauf lorsqu’une autre distribution stable est publiée la même année.</p>
+<p><strong>4. Combien de versions au minimum sont activement maintenues par Debian ? Donnez leur nom générique (= les types de distribution).</strong></p>
+<p>Debian maintient toujours activement au minimum 3 versions :</p>
+<ul>
+<li>
+<p>“<em>stable</em>” : cette distribution contient la dernière sortie officielle de Debian, actuellement, il s’agit de Debian 11 (dit Bullseye).</p>
+</li>
+<li>
+<p>“<em>testing</em>” : cette distribution contient les paquets qui sont en attente d’être acceptés dans la distribution stable, actuellement, il s’agit de Bookworm.</p>
+</li>
+<li>
+<p>“<em>unstable</em>” : c’est sur cette distribution que les activités de développement se déroulent, cette dernière est toujours appelée Sid.</p>
+</li>
+</ul>
+<p><strong>5. Chaque distribution majeure possède un nom de code différent. Par exemple, la version majeure actuelle (Debian 11) se nomme Bullseye. D’où viennent les noms de code donnés aux distributions ?</strong></p>
+<p>Les noms de code donnés viennent du célèbre film Pixar : <a href="https://www.pixar.com/feature-films/toy-story">Toy Story</a>. En effet, lors de la publication de Debian 1.1, le chef du projet Debian, <a href="https://fr.wikipedia.org/wiki/Bruce_Perens">Bruce Perens</a>, travaillait chez Pixar, c’est lui qui a lancé la tradition</p>
+<p><img src="https://lh4.googleusercontent.com/gpHbQfcq73oqssCa-BW_7uXeFQ4XVXyRc5TZ0xVZXyaLJN5_vdGJ0rS2YAVULiBYGSyuCTwWccLtxo4ewpYxT7IIJQFVsUZIyQa67tTsV33_j4rBTWMtnNHQ0otecy2SQ9Ukjt_IV9TDZMyZlAz4X5E" alt="Bruce Perens"></p>
+<p><strong>6. L’un des atouts de Debian fut le nombre d’architecture (≈ processeurs) officiellement prises en charge. Combien et lesquelles sont pris en charge par la version Bullseye ?</strong></p>
+<p>Il y a au total 9 architectures prises en charge par Debian 11 :</p>
+<ul>
+<li>
+<p>amd64</p>
+</li>
+<li>
+<p>i386</p>
+</li>
+<li>
+<p>ppc64e</p>
+</li>
+<li>
+<p>s390x</p>
+</li>
+<li>
+<p>armel</p>
+</li>
+<li>
+<p>armhf</p>
+</li>
+<li>
+<p>arm64</p>
+</li>
+<li>
+<p>mipsel</p>
+</li>
+<li>
+<p>mips64el</p>
+</li>
+</ul>
+<p><strong>7. Première version avec un nom de code (Quel a été le premier nom de code utilisé ? Quand a-t-il été annoncé ? Quel était le numéro de version de cette distribution ?)</strong></p>
+<p>Le premier nom de code utilisé fut <strong><em>Buzz</em></strong>, il s’agit du nom de code de la version 1.1, publiée le 17 juin 1996.</p>
+<p><img src="https://lh6.googleusercontent.com/53UaYwACqCk7hsuFGDkc8l75WVscO6KJNEmwpuy2OPyi48zQVp_N0Efs8Ed_Gvd5JM9HprmNIsbBWPCigo-zBa8LpHLUKX-jTligTZfPz56zPSwnuwQsbcgbR0Tm1vxv8SyhH9EqktudQhLVJwyQHx8" alt="Buzz"></p>
+<p><strong>8. Dernier nom de code attribué (Quel est le dernier nom de code annoncé à ce jour ? Quand a-t-il été annoncé ? Quelle est la version de cette distribution ?)</strong></p>
+<p>La dernière version de debian publiée est <strong><em>Bullseye</em></strong> ,il s’agit de la version 11 qui est l’actuelle version “stable”. Elle a été annoncée le 6 juillet 2016 et publiée le 14 août 2021.<br>
+<img src="https://lh5.googleusercontent.com/iBDZY_O4tFdXcktOrnx1DHC4JYdvUVr7MqzudEqxatq6YsOej9LhkieB0_BToKhXDd05syGa85wA2I-Yh6JK9OO1_TwF-EDmGwdLmwdevzwGzdf9a2NMJlsf9_ml1NbPKZ73gp2qVKReIJDCI5ZmFSc" alt="Bulleseye"></p>
+<p>Debian est en train de développer une nouvelle version, Debian 12, ayant pour nom de code <strong><em>Bookworm</em></strong> qui a été annoncée le 16 avril 2018, c’est l’actuelle version “<em>testing</em>”.</p>
+<p><img src="https://lh6.googleusercontent.com/lESCddNFVRzrRoaTSJjLvWVvltD8TWgyEQp_ziUAhl5z0PQw3-7KZbCrjwVlSwwkMpRa2KwPw7G9Ju2QJJUhRjiIjnoCBdm3jHwee36mW2eFO4fny7MhoOWo7-YSdw-rQiHAGwf48bGqqGBtin2653I" alt="Bookworm"></p>
+<h3 id="installation-préconfigurée"><em>Installation préconfigurée</em></h3>
+<p>Dans un premier temps, il nous faut créer la machine virtuelle sur <em>VirtualBox</em>, de la même manière que vue précédemment.</p>
+<p>La machine porte le nom sae203b, elle est de type linux debian 64-bit, elle se trouve dans le fichier <strong>/usr/local/virtual_machine/infoetu/login</strong>, elle a 2048 Mo de RAM et 20 GO de disque dur.</p>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/Capture%20d'%C3%A9cran%202023-03-25%20171505.png" alt="Config"></p>
+<p>Il faut décompresser le fichier autoinstall.zip au même endroit que la VM et faire la commande :</p>
+<pre><code>sed -i -E "s/(--iprt-iso-maker-file-marker-bourne-sh).*$/
+\1=$(cat /proc/sys/kernel/random/uuid)/" S203-Debian11.viso
+</code></pre>
+<p>Ensuite, nous passons à la mise en place du fichier S203_Debian11.viso dans le lecteur optique de la machine virtuelle.<br>
+Nous pouvons commencer le démarrage de l’auto installation.</p>
+<p>Pour mettre les droits sudo à l’user, il faut mettre MATE comme bureau et installer les paquets il faut :</p>
+<ul>
+<li>
+<p>ajouter sudo aux groupes du user dans la partie Utilisateur Standard : d-i passwd/user-default-groups string audio cdrom video sudo</p>
+</li>
+<li>
+<p>ajouter tous les paquets à installer dans la partie Packages, Mirrors, Image : d-i pkgsel/include string sudo git sqlite3 curl bash-completion neofetch</p>
+</li>
+<li>
+<p>ajouter MATE comme style de bureau de base dans la partie installation de meta-paquetages : tasksel tasksel/first multiselect standard ssh-server mate-desktop desktop</p>
+</li>
+</ul>
+<p>Nous lançons l’installation et mettons 2 CPU pour que la machine puisse se lancer.</p>
+<p><strong>L’installation est désormais terminée !</strong></p>
+<h2 id="installation-du-service-gitea">Installation du service Gitea</h2>
+<h3 id="git-gui-et-gitk"><em>Git-gui et Gitk</em></h3>
+<p>Maintenant que la configuration de notre machine est désormais finie, avec les paquets installés, il faut à présent effectuer la configuration globale de git.</p>
+<p>Pour cela, il faut d’abord ouvrir un terminal et entrer les commandes suivantes :</p>
+<pre><code>git config --global user.name "Prénom Nom"
+git config --global user.email "votre@email"
+git config --global init.defaultBranch "master"
+</code></pre>
+<p><strong>Note :</strong> Bien évidemment, il faudra remplacer les <em>Prénom</em>, <em>Nom</em> et <em>votre@email</em> par les vôtres.</p>
+<p>Ensuite, il faut installer le paquet <em>git-gui</em> afin d’y avoir accès sur notre machine.</p>
+<p><em>Git-Gui</em>  est une interface graphique basée sur le langage Tcl/Tk pour Git. Elle permet aux utilisateurs d’effectuer les opérations git courantes, qui seront donc implémenté en Tcl/Tk, tels qu’apporter des modifications avec des nouveaux commit, modifier ceux qui existent déjà, etc.</p>
+<p>Afin de lancer le logiciel, il suffit de taper son nom dans le terminal :</p>
+<pre><code>git gui
+</code></pre>
+<p>Mais nous pouvons aussi lui associer directement une commande souhaitée, ainsi il faudrait ajouter à cette instruction sa commande et si souhaité aussi des arguments :</p>
+<pre><code>git gui [&lt;command&gt;] [&lt;arguments&gt;]
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/git-gui.png" alt="guit-gui"><br>
+Il existe également le logiciel <em>GitK</em> qui serait important d’installer.</p>
+<p><em>GitK</em> est également une interface liée à Git mais nous qui nous permet elle de visualiser de façon détaillé et graphique l’historique Git, donc de voir toutes les actions effectuer dessus tels que les <em>commits</em> .</p>
+<p>Pour le lancer, il suffit également de taper son nom sur le terminal :</p>
+<pre><code>gitk
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/gitk.png" alt="guitk"></p>
+<p>Avec Git, il est possible de définir un proxy par défaut. Pour cela, il suffit de taper la ligne de commande suivante :</p>
+<pre><code>% git config --add core.gitproxy ' "proxy-command" for proxy-iut.com'
+</code></pre>
+<p><em>proxy-iut</em> étant par exemple le proxy de l’IUT, ou le proxy que vous souhaitez mettre par défaut.</p>
+<p>Avant de procéder à l’installation de Gitea, nous allons rediriger le port 3000 de la machine physique vers le port 3000 de la machine virtuelle.</p>
+<p>Pour cela, nous allons nous diriger vers la configuration de la machine &gt; Réseau et on va cliquer sur redirection de ports :</p>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/config%20reseau%202.png" alt="Réseau1"></p>
+<p>Puis, on va ajouter un port avec le plus vert su le côté et rentrer les données comme l’image suivante :</p>
+<p><img src="https://raw.githubusercontent.com/Melda04/SAE-2.03/main/config%20reseau%201.png" alt="Réseau2"></p>
+<p>Nous pouvons enfin débuter l’installation de Gitea !</p>
+<h3 id="fichier-binaire"><em>Fichier Binaire</em></h3>
+<p>Tout d’abord, <em>Gitea</em> est une interface web permettant de visualiser les branches, les commits, les tags, etc de ses projets git mais permet également la gestion du code source. Il comporte un système de suivi des bugs, un wiki ainsi que des outils pour la relecture de code.</p>
+<p>Ainsi, <em>Gitea</em> est une solution d’hébergement de code léger écrit en Go (langage de programmation). Ce logiciel est ainsi comparable avec <em>GitLab</em> ou encore <em>GitHub</em> qui possède le même but et se ressemble fortement en termes de fonctionnalité, ils peuvent ainsi être des alternatives à <em>Gitea</em>.</p>
+<p>Passons donc à l’installation de Gitea:</p>
+<ul>
+<li>Installation du binaire :</li>
+</ul>
+<p>Tout d’abord, télécharger le fichier correspondant à la plate-forme que vous souhaitez <a href="https://dl.gitea.com/gitea/">ici</a>.<br>
+Pour cela, taper dans le terminal les lignes de commandes suivantes en modifiant l’URL par celle choisit précédemment (dans notre cas, ce sera la version 1.18.5)  :</p>
+<pre><code>wget -O gitea https://dl.gitea.com/gitea/1.18.5/gitea-1.18.5-linux-amd64
+chmod +x gitea
+</code></pre>
+<p><strong>Note</strong> : La commande <em>chmod</em> vous permet d’obtenir les droits d’exécution sur le logiciel.</p>
+<p>Il faut désormais vérifier la signature GPG, et donc télécharger le fichier signature pour le binaire téléchargé juste avant et utilisez l’outil de ligne de commande GPG :</p>
+<pre><code>gpg --keyserver keys.openpgp.org --recv 7C9E68152594688862D62AF62D9AE806EC1592E2
+gpg --verify gitea-1.18.5-linux-amd64.asc gitea-1.18.5-linux-amd64
+</code></pre>
+<p><strong>L’installation du binaire est désormais terminée !</strong></p>
+<h3 id="gitea"><em>Gitea</em></h3>
+<p>On souhaite activer le démarrage automatique de <em>Gitea</em> au démarrage, pour cela, on va taper dans le terminal les commandes suivantes :</p>
+<pre><code>sudo systemct1 enable gitea
+sudo systemct1 start gitea
+</code></pre>
+<p>Nous allons passer au démarrage et au paramétrage de <em>Gitea</em>.</p>
+<p>On vérifie tout d’abord que le service est bien démarré avec la commande suivante :</p>
+<pre><code>systemctl status gitea.service
+</code></pre>
+<p>Puis, on va utiliser le navigateur web de notre machine physique et nous rendre à l’adresse suivante (<a href="http://localhost:3000">ici</a>), et modifier les paramètres :</p>
+<ul>
+<li>Type de base de données : <strong>SQLite3</strong></li>
+<li>Nom d’utilisateur administrateur : <strong>gitea</strong></li>
+<li>Mot de passe : <strong>gitea</strong></li>
+<li>Adresse e-mail : <strong>git@localhost</strong></li>
+</ul>
+<p><strong>L’installation de Gitea est terminée !</strong></p>
+<h2 id="sources">Sources</h2>
+<h3 id="installation-de-la-machine-virtuelle-manuellement-1">Installation de la machine virtuelle manuellement</h3>
+<ul>
+<li>
+<p><strong><a href="https://docs.oracle.com/cd/E26217_01/E35193/html/qs-guest-additions.html#:~:text=Les%20Additions%20invit%C3%A9%20VirtualBox%20comprennent,performances%20et%20une%20utilisation%20optimale">https://docs.oracle.com/cd/E26217_01/E35193/html/qs-guest-additions.html#:~:text=Les Additions invité VirtualBox comprennent,performances et une utilisation optimale</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://www.commentcamarche.net/informatique/windows/757-creer-ou-ouvrir-un-fichier-iso-sur-pc/">https://www.commentcamarche.net/informatique/windows/757-creer-ou-ouvrir-un-fichier-iso-sur-pc/</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://www.ionos.fr/digitalguide/serveur/know-how/quest-ce-quun-fichier-iso/">https://www.ionos.fr/digitalguide/serveur/know-how/quest-ce-quun-fichier-iso/</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://ubuntu-mate.org/fr/about/#:~:text=Le%20Bureau%20MATE%20est%20une,moniteur%20syst%C3%A8me%20et%20un%20terminal">https://ubuntu-mate.org/fr/about/#:~:text=Le%20Bureau%20MATE%20est%20une,moniteur%20syst%C3%A8me%20et%20un%20terminal</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://fr.wikipedia.org/wiki/GNOME">https://fr.wikipedia.org/wiki/GNOME</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://wiki.debian.org/fr/MATE">https://wiki.debian.org/fr/MATE</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://developer.mozilla.org/fr/docs/Learn/Common_questions/Web_mechanics/What_is_a_web_server">https://developer.mozilla.org/fr/docs/Learn/Common_questions/Web_mechanics/What_is_a_web_server</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://www.hostinger.fr/tutoriels/serveur-web">https://www.hostinger.fr/tutoriels/serveur-web</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://www.lemagit.fr/definition/SSH-Secure-Shell#:~:text=SSH%2C%20ou%20Secure%20Socket%20Shell,mettent%20en%20oeuvre%20le%20protocole">https://www.lemagit.fr/definition/SSH-Secure-Shell#:~:text=SSH%2C%20ou%20Secure%20Socket%20Shell,mettent%20en%20oeuvre%20le%20protocole</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://help.gnome.org/users/gnome-help/stable/net-proxy.html.fr">https://help.gnome.org/users/gnome-help/stable/net-proxy.html.fr</a></strong></p>
+</li>
+</ul>
+<h3 id="installation-debian-automatisée-par-préconfiguration-1">Installation Debian automatisée par préconfiguration</h3>
+<ul>
+<li><strong><a href="https://www.debian.org/doc/manuals/project-history/intro.fr.html">https://www.debian.org/doc/manuals/project-history/intro.fr.html</a></strong></li>
+<li><strong><a href="https://wiki.debian.org/fr/LTS">https://wiki.debian.org/fr/LTS</a></strong></li>
+<li><strong><a href="https://wiki.debian.org/LTS/Extended">https://wiki.debian.org/LTS/Extended</a></strong></li>
+<li><strong><a href="https://www.debian.org/security/faq.fr.html#lifespan">https://www.debian.org/security/faq.fr.html#lifespan</a></strong></li>
+<li><strong><a href="https://www.debian.org/releases/index.fr.html">https://www.debian.org/releases/index.fr.html</a></strong></li>
+<li><strong><a href="https://wiki.debian.org/fr/ToyStory">https://wiki.debian.org/fr/ToyStory</a></strong></li>
+<li><strong><a href="https://wiki.debian.org/DebianBullseye">https://wiki.debian.org/DebianBullseye</a></strong></li>
+<li><strong><a href="https://wiki.debian.org/fr/DebianBuzz">https://wiki.debian.org/fr/DebianBuzz</a></strong></li>
+<li><strong><a href="https://wiki.debian.org/fr/DebianBullseye">https://wiki.debian.org/fr/DebianBullseye</a></strong></li>
+<li><strong><a href="https://wiki.debian.org/fr/DebianBookworm">https://wiki.debian.org/fr/DebianBookworm</a></strong></li>
+</ul>
+<h3 id="installation-du-service-gitea-1">Installation du service Gitea</h3>
+<ul>
+<li><strong><a href="https://fr.wikipedia.org/wiki/Git#:~:text=git%2Dgui%20%3A%20outil%20permettant%20les,graphique%20d'un%20historique%20Git">https://fr.wikipedia.org/wiki/Git#:~:text=git-gui %3A outil permettant les,graphique d’un historique Git</a></strong></li>
+<li><strong><a href="https://git-scm.com/docs/git-gui/">https://git-scm.com/docs/git-gui/</a></strong></li>
+<li><strong><a href="http://codeur-pro.fr/git-gui-guide-complet/">http://codeur-pro.fr/git-gui-guide-complet/</a></strong></li>
+<li><strong><a href="https://git-scm.com/docs/git-config/fr">https://git-scm.com/docs/git-config/fr</a></strong></li>
+<li><strong><a href="https://framalibre.org/content/gitea">https://framalibre.org/content/gitea</a></strong></li>
+<li><strong><a href="https://fr.wikipedia.org/wiki/Gitea">https://fr.wikipedia.org/wiki/Gitea</a></strong></li>
+<li><strong><a href="https://www.logiciels.pro/logiciel-saas/gitea/">https://www.logiciels.pro/logiciel-saas/gitea/</a></strong></li>
+<li><strong><a href="https://docs.gitea.io/en-us/install-from-binary/">https://docs.gitea.io/en-us/install-from-binary/</a></strong></li>
+<li><strong><a href="https://docs.gitea.io/en-us/linux-service/">https://docs.gitea.io/en-us/linux-service/</a></strong></li>
+</ul>
+
+    </div>
+  </div>
+</body>
+
+</html>

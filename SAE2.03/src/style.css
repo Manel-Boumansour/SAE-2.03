@@ -1,0 +1,35 @@
+body{
+    font-family: 'Andale Mono', monospace;
+    color: black;
+}
+
+a {
+    color: black;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+h1{
+    font-family: 'Luminari', fantasy;
+    text-align: center;
+}
+
+h2{
+    font-style: bold;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    text-decoration: underline grey;
+}
+
+h3{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: underline;
+    text-decoration-style: double;
+}
+
+ul{
+    list-style-type: style type;
+}
